@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+
+
+<script>
+    //不明意义
+    function constfun(v){
+        return function(){
+            return v;
+        }();
+    }
+
+    var funcs=[];
+    for(var i=0;i<10;i++){
+        funcs[i]=constfun(i);
+    }
+
+    console.log(funcs);
+
+</script>

@@ -1,0 +1,41 @@
+<script>
+
+    function qq(argument){
+        console.log(this);
+        t=this;
+        b='123';
+
+        function aa(){
+            var tt=this;
+            console.log(tt);
+            o=t;
+
+            console.log(o);
+            console.log('run');
+        }
+        return aa;
+    }
+
+    qq()();
+
+    function Person(name,age){
+        this.name=name;
+        this.age=age;
+    }
+
+    Person.prototype.out=function(){
+        var self=this;
+        console.log(self);
+        console.log(this.name+':'+this.age);
+    };
+
+    var p=new Person('dd',90);
+    p.out();
+
+    function A() {
+        this.age = 100;
+    }
+
+
+
+</script>

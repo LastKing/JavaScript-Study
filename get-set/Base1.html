@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+
+    var test = {
+        _Name: null,
+        _Age: 0,
+
+        //_Name的读写
+        set name(name) {
+            this._Name = name
+        },
+        get name() {
+            return this._Name;
+        },
+
+        //_Age的读写
+        set age(age) {
+            this._Age = age
+        },
+        get age() {
+            return this._Age
+        }
+
+    };
+
+    alert(test.name + " " + test.age);//bull 0
+    test.name = 'lucy';
+    test.age = 20;
+    alert(test.name + " " + test.age);
+
+
+</script>
+
+
+</body>
+</html>

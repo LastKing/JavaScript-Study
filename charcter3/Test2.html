@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+    function classof(o){
+        if(o == null) return "NULL";
+        if(o == undefined) return "Undefined";
+        return Object.prototype.toString.call(o).slice(8,-1);
+    }
+
+    var o={};
+    console.log(classof(o));
+    console.log(classof(null)); //NULL
+    console.log(classof(1));     //Number
+    console.log(classof(""));    //String
+    console.log(classof(false));//Boolean
+    console.log(classof({}));    //Object
+    console.log(classof([]));    //Array
+    console.log(classof( /./));  //RegExp
+    console.log(classof( new Date)); //Date
+    console.log(classof(window)); //global
+    var f=function(){};
+    console.log(classof( f()));   //NULL
+
+
+    var o={x:1 , y:{z:[false,null,""]}};
+    s=JSON.stringify(o);
+    p=JSON.parse(s);
+
+
+    console.log(new Date().toString());       //Thu Jul 23 2015 16:36:54 GMT+0800 (中国标准时间)
+    console.log(new Date().toLocaleString()); //2015/7/23 下午4:36:54
+
+    console.log(new Date().toJSON());         //2015-07-23T08:53:34.155Z
+
+
+
+    var strict =(function (){return !this;}());
+    console.log(strict);
+
+
+
+
+</script>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!--<script src="aQuery2.js"></script>-->
+    <script src="jquery-2.1.1.js"></script>
+</head>
+<body>
+<table>
+    <tr>
+        <td style="background: #229DE1; color:#fff">sdsa</td>
+    </tr>
+</table>
+</body>
+</html>
+
+<script>
+    //    console.log($());
+
+    //once
+    //    function fn1( value ) {
+    //        console.log( value );
+    //    }
+    //
+    //    function fn2( value ) {
+    //        fn1("fn2 says: " + value);
+    //        return false;
+    //    }
+    //    var callbacks = $.Callbacks(  );
+    //    callbacks.add( fn1 );
+    //    callbacks.fire( "foo" );  //foo 只执行了一次，后面没执行了
+    //    callbacks.add( fn2 );
+    //    callbacks.fire( "bar" );
+    //    callbacks.remove( fn2 );
+    //    callbacks.fire( "foobar" );
+
+
+    //memory
+    var callbacks = $.Callbacks("memory");
+
+    callbacks.add(function () {
+        console.log("f1");
+    });
+
+    callbacks.fire(); //输出 "f1",这时函数列表已经执行完毕!
+
+    callbacks.add(function () {
+        console.log("f2");
+    }); //memory作用在这里，没有fire，一样有结果: f2
+
+    callbacks.fire(); //输出 "f1",这时函数列表已经执行完毕!
+
+    callbacks.add(function () {
+        console.log("f2");
+    }); //memory作用在这里，没有fire，一样有结果: f2
+
+
+    //$.CallBack不会自动去重
+    //    var f1 = function () {
+    //        console.log("f1");
+    //    };
+    //    var f2 = function () {
+    //        console.log("f2");
+    //    };
+    //
+    //    var callbacks = $.Callbacks();
+    //    callbacks.add(f1);
+    //    callbacks.add(f1);
+    //    callbacks.fire();         //输出  f1 f1
+    //
+    //    //传递参数 "unique"
+    //    callbacks = $.Callbacks("unique");
+    //    callbacks.add(f2); 　　  //有效
+    //    callbacks.add(f2); 　　  //添加不进去
+    //    callbacks.fire();　　　　 //输出: f1
+
+    //当一个回调返回false 时中断调用
+    //    var f1 = function () {
+    //        console.log("f1");
+    //        return false;
+    //    }; //注意 return false;
+    //    var f2 = function () {
+    //        console.log("f2");
+    //    };
+    //
+    //    var callbacks = $.Callbacks();
+    //    callbacks.add(f1);
+    //    callbacks.add(f2);
+    //    callbacks.fire(); //输出 f1 f2
+    //
+    //    callbacks = $.Callbacks("memory stopOnFalse");
+    //    callbacks.add(f1);
+    //    callbacks.add(f2);
+    //    callbacks.fire();　　　　 //只输出  f1
+    //
+    //    callbacks.add(function () {
+    //        console.log("f3");
+    //    }); //不会输出，memory已经失去作用了
+    //    callbacks.fire();　　　　 //重新触发，输出f1
+
+
+
+</script>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+
+<div>
+    <label for="">
+        <input type="checkbox" name="cb" checked/>1
+        <input type="checkbox" name="cb"/>1
+        <input type="checkbox" name="cb"/>1
+        <input type="checkbox" name="cb"/>1
+    </label>
+</div>
+
+<script>
+    var checks = document.getElementsByTagName('input');
+    console.log(checks);
+
+    //x为小和尚
+    //y为大和尚
+    for (var x = 1; x < 100; x++) {
+        for (var y = 1; y < 100 - x; y++) {
+            if (x / 4 + y * 4 == 100) {
+                console.log('小和尚:' + x + "大和尚："+y);
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

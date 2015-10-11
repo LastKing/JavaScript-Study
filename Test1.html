@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+    function sum (x) {
+        function sumIt(y) {
+            return x + y;
+        }
+        return sumIt;
+    }
+
+    // Usage
+    var sumA = sum(4);
+    var sumB = sumA(3);
+    console.log(sumB);  //return 7
+
+
+    var a = function () {
+        var largeStr = new Array(1000000).join('x');
+        return function () {
+            return largeStr;
+        };
+    }();
+
+</script>

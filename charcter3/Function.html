@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+
+    (function (){
+
+    }());
+
+    !function(){
+
+    }();
+
+    function counter(){
+        var n=0;
+        return {
+            count:function(){return ++n;},
+            reset:function(){return n=0;}
+        };
+    }
+
+    var c=counter(),d=counter();
+    console.log(c.count());
+    console.log(d.count());
+    console.log(c.reset());
+    console.log(c.count());
+    console.log(d.count());
+
+
+    //这个函数给对象o增加了属性存储器方法
+    //方法名称为get<name> set <name> .如果提供了一个判断函数
+    //setter 方法就会用它来监测参数的合法性，然后在存储它
+    //如果判断函数返回false ，setter 方法跑出一个异常
+    //
+    //这个函数有一个非同寻常之处，就是getter和 setter函数
+    //锁操作的属性值并没有存储在对象o中
+    //相反，这个值仅仅是保存在函数中的局部变量中
+    //getter和setter方法同样是局部函数，因此可以访问这个局部变量
+    //也就是说，对于两个 存取器方法来说这个变量是私有的
+    //也灭有办法绕过存取器方法来设置或者 修改这个值
+    function addPrivateProperty(o,name,predicate){
+        var value;//这是一个属性值
+
+        //getter方法简单地将其返回
+        o["get"+name]=function(){return value;};
+
+        //setter方法首先检测值是否合法，若不合法就跑出异常
+        //否则就将其存储起来
+        o["set"+name]=function(v){
+            if(predicate&&!predicate(v)){
+                throw Error("set"+name+":invalid value"+v);
+            }else{
+                value=v;
+            }
+        };
+    }
+
+    var o={};  //设置一个空对象
+
+    //增加属性存取器getName() 和 setName()
+    //确保只允许字符串值
+    addPrivateProperty(o,"Name",function(x){return typeof x=="string";});
+
+    o.setName("Frank");  //设置属性值
+    console.log(o.getName());//得到属性值
+    o.getName(o);        //涉土设置一个错误类型的值
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

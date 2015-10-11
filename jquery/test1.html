@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jquery-2.0.3.js"></script>
+</head>
+<body>
+<script>
+    //    console.log($);
+    //    console.log($());
+    ///////////////////////
+    //    var callbacks = $.Callbacks("once");
+    //
+    //    callbacks.add(function() {
+    //        console.log('a');
+    //    });
+    //
+    //    callbacks.add(function() {
+    //        console.log('b');
+    //    });
+    //
+    //    callbacks.fire(); //输出结果: 'a' 'b'
+    //    callbacks.fire(); //未执行
+
+//    function fn1(value) {
+//        console.log(value);
+//    }
+//
+//    function fn2(value) {
+//        fn1("fn2 says: " + value);
+//        return false;
+//    }
+//
+//    function fn3(value,v2) {
+//        fn1("fn3 says: " + value+':'+v2);
+//        return false;
+//    }
+//
+//    var callbacks= $.Callbacks();
+//    callbacks.add(fn1);
+//
+//    callbacks.fire('fn1!');
+//
+//    callbacks.add( fn2 );
+//    // outputs: bar!, fn2 says: bar!
+//    callbacks.fire( "bar!" );
+//
+//    callbacks.add(fn3);
+//    callbacks.fire('test','ss');
+//
+//    console.log(1&&2);
+
+    var result= $.fn.extend(   {},
+            { name: "John", location: {city: "Boston",county:"USA"} },
+            { last: "Resig", location: {state: "MA",county:"China"} } );
+
+    console.log(result);
+
+    console.log($.Deferred());
+
+
+</script>
+</body>
+</html>

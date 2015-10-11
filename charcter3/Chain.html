@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+
+
+<script>
+    function ClassManager(){}
+    ClassManager.prototype.addClass=function (str){
+        console.log('Class:'+str+'added');
+        return this;
+    };
+
+
+    var manager=new ClassManager();
+    manager.addClass('classA').addClass('classB')
+            .addClass('classC');
+
+
+</script>

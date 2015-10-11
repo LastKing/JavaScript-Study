@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+    
+    function Person(name,age){
+        this.name=name;
+        this.age=age;
+    }
+
+    Person.prototype={
+        getName:function(){
+            return this.name;
+        },
+        getAge:function(){
+            return this.age;
+        }
+    };
+
+    var alice=new Person('张三',25);
+    var bill=new Person('李四',30);
+
+    console.log("name属性："+alice.name);
+    console.log(alice.getName());
+    console.log(bill.getAge());
+
+    Person.prototype.getGreeting=function(){
+        return 'Hi'+this.getName()+'!';
+    };
+
+    console.log(alice.getGreeting());
+
+    alice.displayGreeting=function(){
+        alert(this.getGreeting());
+    };
+
+
+</script>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<button></button>
+<button></button>
+<button></button>
+<script>
+    var nodes = document.getElementsByTagName('button');
+    for (var i = 0; i < nodes.length; i++) {
+        nodes[i].addEventListener('click', function() {
+            console.log('You clicked element #' + i);
+        });
+    }
+
+</script>
+</body>
+</html>

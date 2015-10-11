@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jquery-2.0.3.js"></script>
+</head>
+<body>
+
+
+<script>
+    //    var fn1=function(i){
+    //        console.log('say : ' + i);
+    //    };
+    //    var callbacks = $.Callbacks("memory");
+    //
+    //    callbacks.add( fn1 );
+    //    callbacks.fire( "1" );
+    //
+    //    callbacks.add( fn1 );
+    //    callbacks.fire( "2" );
+    //
+    //    callbacks.add( fn1 );
+    //    callbacks.fire( "3" );
+    //
+    //    callbacks.add( fn1 );
+    //    callbacks.fire( "4" );
+
+
+    function aaa(callback) {
+        setTimeout(function () {
+            callback(5);
+        }, 1000);
+    }
+
+    function done(value) {
+        console.log(value)
+    }
+
+    aaa(function (value) {
+        done(value);
+    });
+
+
+    var defer = $.Deferred(); //构建异步对象
+
+    setTimeout(function () {
+        defer.resolve(5);
+    }, 1000);
+
+    var filtered = defer.then(function (value) {
+        return value * 2;
+    });
+
+    filtered.done(function (value) {
+        console.log('打印出值', value)
+    });
+
+</script>
+
+
+</body>
+</html>

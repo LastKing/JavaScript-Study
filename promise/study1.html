@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var 下班 = function () {
+        console.log('下班');
+    };
+    下班.then = function (resovle) {
+        setTimeout(function () {
+            resovle();
+        }, 3 * 1000);
+    };
+    var 搭车 = function () {
+        console.log('搭车');
+    };
+    搭车.then = function (resovle) {
+        setTimeout(function () {
+            resovle();
+        }, 2 * 1000);
+    };
+    var 接小孩 = function () {
+        console.log('接小孩');
+    };
+    接小孩.then = function (resovle) {
+        setTimeout(function () {
+            resovle();
+        }, 3 * 1000);
+    };
+    var 回家 = function () {
+        console.log('回家');
+    };
+
+
+    var p = new Promise(function (resolve, reject) {
+        resolve();
+    });
+    p.then(function () {
+        下班();
+        return 下班;
+    })
+            .then(function () {
+                搭车();
+                return 搭车;
+            })
+            .then(function () {
+                接小孩();
+                return 接小孩;
+            })
+            .then(function () {
+                回家();
+            });
+</script>
+</body>
+</html>

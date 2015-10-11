@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../jquery/jquery-2.1.1.js"></script>
+</head>
+<body>
+
+<button onclick="jssdk[test]()">hello1</button>    <!--2-->
+<button onclick="jssdk.test()">hello2</button>   <!--3-->
+</body>
+
+</html>
+<script>
+    window.jssdk = {
+
+    };
+    function test(){
+        alert('hello');
+    }
+
+    jssdk[test] = test;    // 1
+</script>

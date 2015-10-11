@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+//    function onReady(fn) {
+//        var readyState = document.readyState;
+//        if (readyState === 'interactive' || readyState === 'complete') {
+//            fn();
+//        } else {
+//            window.addEventListener('DOMContentLoaded', fn);
+//        }
+//    }
+//    onReady(function () {
+//        console.log('DOM fully loaded and parsed');
+//    });
+//    console.log('==Starting==');
+
+//    function onReady(fn) {
+//        var readyState = document.readyState;
+//        if (readyState === 'interactive' || readyState === 'complete') {
+//            setTimeout(fn, 0);
+//        } else {
+//            window.addEventListener('DOMContentLoaded', fn);
+//        }
+//    }
+//    onReady(function () {
+//        console.log('DOM fully loaded and parsed');
+//    });
+//    console.log('==Starting==');
+
+    function onReadyPromise() {
+        return new Promise(function (resolve, reject) {
+            var readyState = document.readyState;
+            if (readyState === 'interactive' || readyState === 'complete') {
+                resolve();
+            } else {
+                window.addEventListener('DOMContentLoaded', resolve);
+            }
+        });
+    }
+    onReadyPromise().then(function () {
+        console.log('DOM fully loaded and parsed');
+    });
+    console.log('==Starting==');
+</script>
