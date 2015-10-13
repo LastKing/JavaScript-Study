@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../jquery/jquery-2.0.3.js"></script>
+</head>
+<body>
+
+<script>
+    var wait = function(){
+        var tasks = function(){
+            alert("执行完毕！");
+        };
+        setTimeout(tasks,5000);
+    };
+
+    $.when(wait())
+            .done(function(){ alert("哈哈，成功了！"); })
+            .fail(function(){ alert("出错啦！"); });
+</script>
+
+
+</body>
+</html>
