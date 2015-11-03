@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../jquery/jquery-2.0.3.js"></script>
+</head>
+<body>
+<div id="example">
+    <button>增加</button>
+    <span></span>
+    <button>减少</button>
+</div>
+<div id="example1">
+    <button>增加</button>
+    <span></span>
+    <button>减少</button>
+</div>
+<div id="example2">
+    <button>增加</button>
+    <span></span>
+    <button>减少</button>
+</div>
+
+<script>
+    function Component(el, options) {
+        this.opts = $.extend({
+            initVal: 0,
+            maxVal: 30
+        }, options);
+
+
+        this.$el = el;
+        this._currVal = this.opts.initVal;
+
+        this.$add = this.$el.find('button:first');
+        this.$sub = this.$el.find('button:last');
+        this.$show = this.$el.find('span');
+
+
+        this.render(this._currVal);
+        this.$add.on('click', $.proxy(this.handleAdd, this));
+        this.$sub.on('click', $.proxy(this.handleSub, this));
+    }
+
+    $.extend(Component.prototype, {
+        handleAdd: function () {
+            this.render(this._currVal + 1);
+        },
+        handleSub: function () {
+            this.render(this._currVal - 1);
+        },
+        render: function (val) {
+            if (val <= this.opts.initVal) {
+                this._currVal = this.opts.initVal;
+            } else if (val >= this.opts.maxVal) {
+                this._currVal = this.opts.maxVal;
+            } else {
+                this._currVal = val;
+            }
+
+            this.$show.text(this._currVal);
+        },
+        getCurrVal: function () {
+            return this._currVal;
+        }
+    });
+
+
+    new Component($('#example'));
+    new Component($('#example1'), {
+        initVal: 5,
+        maxVal: 20
+    });
+    var component = new Component($('#example2'), {
+        initVal: 10,
+        maxVal: 30
+    });
+
+    component.getCurrVal();
+</script>
+</body>
+</html>
