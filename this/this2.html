@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function foo() {
+        alert(this);
+    }
+
+    foo(); // global
+
+    alert(foo === foo.prototype.constructor); // true
+
+    // 但是同一个function的不同的调用表达式，this是不同的
+
+    foo.prototype.constructor(); // foo.prototype
+</script>
+</body>
+</html>
