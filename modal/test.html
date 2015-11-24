@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .modal {
+            z-index: 9999;
+            width: 400px;
+            height: 200px;
+            top: 30%;
+            left: 30%;
+            border: 3px solid #ECECEC;
+            position: absolute;
+            background-color: #ffffff;
+            display: none;
+        }
+    </style>
+</head>
+<body style="background: #fda">
+
+<div class="modal">
+    提示
+</div>
+
+<button id="modal"> 点击</button>
+<input type="text" />
+
+<script src="../jquery/jquery-2.0.3.js"></script>
+
+<script>
+
+    $('#modal').on('click', function () {
+        $('.modal').fadeToggle("slow");
+    });
+
+</script>
+
+
+</body>
+</html>
