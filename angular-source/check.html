@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="root">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="angular.js"></script>
+    <script src="check.js"></script>
+</head>
+<body ng-controller="RootCtrl">
+
+<div>
+    <label><input type="checkbox"  ng-init="test=false" ng-model="test" value="同意"/>是否同意</label>
+
+    <input type="button" ng-click="getCheck()"/>
+</div>
+
+</body>
+</html>
