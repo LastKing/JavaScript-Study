@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../jquery/jquery-2.0.3.js"></script>
+</head>
+<body>
+
+<script>
+function Product(id, desciption) {
+    this.getId = function () {
+        return id;
+    };
+    this.getDescription = function () {
+        return desciption
+    }
+}
+
+function Cart(eventAggregator) {
+    var items = [];
+
+    this.addItem = function (item) {
+        item.push(item);
+    }
+}
+
+(function () {
+    var products = [
+        new Product(1, "Star warsLegoShip"),
+        new Product(2, "Barbie Doll"),
+        new Product(3, "Remote Control Airplane")
+    ];
+    var cart = new Cart();
+
+    function addToCart() {
+        var productId = $(this).attr('id');
+        var product = $.grep(products, function (x) {
+            return x.getId() == productId;
+        })[0];
+        cart.addItem(product);
+
+        var newItem = $('<li></li>').html(product.getDescription())
+                .attr('id-cart', product.getId())
+                .appendTo("#cart");
+    }
+
+    products.forEach(function (product) {
+        var newItem = $('<li></li>').html(product.getDescription())
+                .attr('id', product.getId())
+                .dblclick(addToCart)
+                .appendTo('#products');
+    });
+}());
+
+</script>
+
+</body>
+</html>
