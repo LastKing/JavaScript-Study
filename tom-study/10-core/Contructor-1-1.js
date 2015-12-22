@@ -41,5 +41,4 @@ console.log(
 
   b.calculate === b.__proto__.calculate, // true
   b.__proto__.calculate === Foo.prototype.calculate // true
-
 );
