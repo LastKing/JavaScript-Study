@@ -1,8 +1,6 @@
 /**
  * Created by Rain on 2015/8/15.
  */
-
-
 var aQuery = function (selector, context) {
   return new aQuery.prototype.init();
 };

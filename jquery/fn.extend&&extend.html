@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jquery-2.0.3.js"></script>
+
+</head>
+<body>
+<script>
+    jQuery.extend({
+        extend: function () {
+            console.log('extend');
+        }
+    });
+    $.extend();
+
+    //$.extend不需要实例jQuery    即（）
+
+    jQuery.fn.extend({
+        fnextend: function () {
+            console.log('fnextend');
+        }
+    });
+    $().fnextend();
+
+    //$.fn.extend()  这个则需要实例化 jQuery 方法才能调用
+</script>
+</body>
+</html>
