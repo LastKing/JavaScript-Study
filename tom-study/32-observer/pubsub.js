@@ -40,7 +40,7 @@ var pubsub = {};
     }
   };
 
-  //订阅方法
+  //退订方法
   q.unsubscribe = function (token) {
     for (var m in topics) {
       if (topics[m]) {
