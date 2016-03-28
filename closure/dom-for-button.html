@@ -24,34 +24,6 @@
             };
         }(i));
     }
-
-
-    var fullname = 'John Doe';
-
-    var obj = {
-
-        fullname: 'Colin Ihrig',
-
-        prop: {
-            fullname: 'Aurelio De Rosa',
-
-            getFullname: function () {
-                return this.fullname;
-            }
-        },
-        getFullname: function () {
-            return this.fullname;
-        }
-    };
-
-    console.log(obj.prop.getFullname());
-
-    console.log(obj.getFullname());
-
-    var test = obj.prop.getFullname;
-
-    console.log(test());
-
 </script>
 
 </body>
