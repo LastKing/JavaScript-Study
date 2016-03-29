@@ -1,4 +1,5 @@
 /**
+ *  冒泡 排序 算法，就是每次将最大或者最小的的数字冒泡到最上面
  * Created by toonew on 2016/3/29.
  */
 
@@ -8,10 +9,10 @@ function bubbleSort(arr) {
   var tempExchangeVal;
   while (i > 0) {
     for (j = 0; j < i - 1; j++) {
-      if (arr[j] > arr[j+1]) {
+      if (arr[j] > arr[j + 1]) {
         tempExchangeVal = arr[j];
-        arr[j] = arr[j+1];
-        arr[j+1] = tempExchangeVal;
+        arr[j] = arr[j + 1];
+        arr[j + 1] = tempExchangeVal;
       }
     }
     i--;
