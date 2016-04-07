@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery-2.0.3.js"></script>
+</head>
+<body>
+<!--jquery 同一个选择每次都会返回不同的对象-->
+<ul>
+    <li class="li"></li>
+    <li class="li" id="li"></li>
+    <li class="li"></li>
+</ul>
+
+<script>
+    console.log($('#li') == $('.li')[2]);
+
+</script>
+</body>
+</html>
