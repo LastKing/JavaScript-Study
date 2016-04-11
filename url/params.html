@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="../jquery/jquery-2.0.3.js"></script>
+<script>
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return decodeURI(r[2]);
+        return null;
+    }
+
+    function changeURLPar(ref, value) {
+        //获取当前的URL
+        var url = window.location.href;
+        var str = url.substr(url.indexOf('?') + 1);
+
+        var modify = "0";
+        var returnUrl = "";
+        //判断是否存在参数
+        if (url.indexOf("?") != -1) {
+            var arr = str.split('&');
+            if (arr[0].split('=')[0] != "") {  //如果第一个key为""   则跳过循环
+                //根据 params 分割数据，根据key  判断是替换
+                for (var i = 0; i < arr.length; i++) {
+                    if (arr[i].split('=')[0] == ref) {
+                        var setParam = value;
+                        modify = "1";
+                    } else {
+                        setParam = arr[i].split('=')[1];
+                    }
+                    //判断 去掉末尾多余&
+                    if (i == arr.length - 1) {
+                        returnUrl = returnUrl + arr[i].split('=')[0] + "=" + setParam
+                    } else {
+                        returnUrl = returnUrl + arr[i].split('=')[0] + "=" + setParam + "&"
+                    }
+                }
+            }
+            //传入 key 如果不存在则 新建参数
+            if (modify == "0")
+                returnUrl = returnUrl + ref + "=" + value;
+            return url.substr(0, url.indexOf('?')) + "?" + returnUrl;
+        } else {
+            //不存在 "?" 则 直接添加值
+            returnUrl = returnUrl + ref + "=" + value;
+            return url + "?" + returnUrl;
+        }
+    }
+
+    function delQueStr(ref) {
+        var str = "";
+        var url = window.location.href;
+        if (url.indexOf("?") !== -1) {
+            str = url.substr(url.indexOf("?") + 1);
+        } else {
+            return null;
+        }
+
+        var arr = "";
+        var returnUrl = "";
+        var setparam = "";
+
+        if (str.indexOf('&') != -1) {
+            arr = str.split('&');
+            for (var i = 0; i < arr.length; i++) {
+                if (arr[i].split('=')[0] != ref) {
+                    //判断 去掉末尾多余&
+                    if (i == arr.length - 1) {
+                        returnUrl = returnUrl + arr[i].split('=')[0] + "=" + arr[i].split('=')[1];
+                    } else {
+                        returnUrl = returnUrl + arr[i].split('=')[0] + "=" + arr[i].split('=')[1] + "&";
+                    }
+                }
+            }
+            return url.substr(0, url.indexOf('?')) + "?" + returnUrl.substr(0, returnUrl.length - 1);
+        } else {
+            arr = str.split('=');
+            if (arr[0] == ref) {
+                return url.substr(0, url.indexOf('?'));
+            }
+            else {
+                return url;
+            }
+        }
+    }
+
+    var xx = getUrlParam('id');
+    var yy = changeURLPar('ste', 2);
+    var ss = delQueStr('fdsa');
+    //    console.log(xx);
+    //    console.log(yy);
+    console.log(ss);
+</script>
+</body>
+</html>
