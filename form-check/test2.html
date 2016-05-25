@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="" id="registerForm" method="post">
+    <p>
+        <label>请输入用户名：</label>
+        <input type="text" name="userName"/>
+    </p>
+    <p>
+        <label>请输入密码：</label>
+        <input type="text" name="password"/>
+    </p>
+    <p>
+        <label>请输入手机号码：</label>
+        <input type="text" name="phoneNumber"/>
+    </p>
+    <input type="submit" value="确定">
+</form>
+
+<script>
+    //校验
+    var strategys = {
+        isNotEmpty: function (value, errorMessage) {
+            if (value === '') {
+                return errorMessage;
+            }
+        },
+        minLength: function (value, length, errorMsg) {
+            if (value.length < length) {
+                return errorMsg;
+            }
+        },
+        mobileFormat: function (value, errorMsg) {
+            //js 里面 这个正则有问题
+            if (/(^1[3|5|8][0-9]{9}$)/.test(value)) {
+                return errorMsg;
+            }
+        }
+    };
+
+    //所有 校验存储容器
+    var Validator = function () {
+        this.cache = [];// 保存有效规则
+    };
+
+    //向容器中添加 需要检测的项目
+    Validator.prototype.add = function (dom, rules) {
+        var self = this;
+        //循环  并给rule 赋值，如果 下标超出将会赋值为undefined ，跳出循环
+        for (var i = 0, rule; rule = rules[i++];) {
+            (function (rule) {
+                //分割rule 中的匹配规则
+                var strategyAry = rule.strategy.split(":");
+                //取出错误信息
+                var errorMsg = rule.errorMsg;
+                self.cache.push(function () {
+                    //弹出 数组中的第一个元素，并删除
+                    var strategy = strategyAry.shift();
+                    //向第一个元素 添加一个元素
+                    strategyAry.unshift(dom.value);
+                    strategyAry.push(errorMsg);
+                    return strategys[strategy].apply(dom, strategyAry);
+                });
+            })(rule);
+        }
+    };
+
+    Validator.prototype.start = function () {
+        for (var i = 0, validatorFunc; validatorFunc = this.cache[i++];) {
+            var msg = validatorFunc();
+            if (msg) {
+                return msg;
+            }
+        }
+    };
+
+    var validateFunc = function () {
+        var validator = new Validator(); // 创建一个Validator对象
+        /* 添加一些效验规则 */
+        validator.add(registerForm.userName, [
+            {strategy: 'isNotEmpty', errorMsg: '用户名不能为空'},
+            {strategy: 'minLength:6', errorMsg: '用户名长度不能小于6位'}
+        ]);
+        validator.add(registerForm.password, [
+            {strategy: 'minLength:6', errorMsg: '密码长度不能小于6位'}
+        ]);
+        validator.add(registerForm.phoneNumber, [
+            {strategy: 'mobileFormat', errorMsg: '手机号格式不正确'}
+        ]);
+        var errorMsg = validator.start(); // 获得效验结果
+        return errorMsg; // 返回效验结果
+    };
+
+    var registerForm = document.getElementById("registerForm");
+    registerForm.onsubmit = function () {
+        var errorMsg = validateFunc();
+        if (errorMsg) {
+            alert(errorMsg);
+            return false;
+        }
+    }
+</script>
+
+</body>
+</html>
