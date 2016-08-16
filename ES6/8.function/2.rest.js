@@ -21,3 +21,25 @@ const sortNumbers2 = (...numbers) => numbers.sort();
 
 console.log(sortNumbers1(2, 1, 6, 3, 3, 6, 7, 8, 9, 0));
 console.log(sortNumbers2(2, 1, 6, 3, 3, 6, 7, 8, 9, 0));
+
+function push(array, ...items) {
+  items.forEach(function (item) {
+    array.push(item);
+    console.log(item);
+  });
+}
+
+var a = [];
+push(a, 1, 2, 3);
+
+// function f(a, ...b, c) {
+// }
+//报错
+
+
+console.log((function (a) {
+}).length); // 1
+console.log((function (...a) {
+}).length);  // 0
+console.log((function (a, ...b) {
+}).length);//1
