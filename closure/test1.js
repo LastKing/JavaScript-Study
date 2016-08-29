@@ -13,5 +13,5 @@ var calculator = function (eq) {
 };
 
 var ca = new calculator(2);
-console.log(ca.test);
+console.log(ca.test);//test 会作为闭包存在，但是作为私有变量不可以被直接访问
 console.log(ca.add(2, 2));
