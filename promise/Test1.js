@@ -14,7 +14,7 @@ describe('Basic Test', function () {
   context('When promise object', function () {
     it('should use `done` for test?', function (done) {
       var promise = Promise.resolve(1);
-      // ¤³¤Î¥Æ¥¹¥È¥³©`¥É¤Ï¤¢¤ëÇ·êˆ¤¬¤¢¤ê¤Ş¤¹
+      // ã“ã®ãƒ†ã‚¹ãƒˆã‚³ãƒ¼ãƒ‰ã¯ã‚ã‚‹æ¬ é™¥ãŒã‚ã‚Šã¾ã™
       promise.then(function (value) {
         assert(value === 1);
         done();
