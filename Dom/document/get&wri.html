@@ -7,7 +7,9 @@
 <body>
 
 <p class="test" id="test"></p>
-<p class="test2" id="test2"><h2>test</h2></p>
+<div class="test2" id="test2">
+    <h2>test</h2>
+</div>
 
 <script>
     console.log(document.getElementById('test'));
@@ -16,8 +18,8 @@
 
     document.write('<h2>hello world</h2>');
 
-//    document.getElementById('test2').innerHTML='<h3>test</h3>';
-    document.getElementsByClassName('test2')[0].innerHTML='<h3>test</h3>';
+    //    document.getElementById('test2').innerHTML='<h3>test</h3>';
+    document.getElementsByClassName('test2')[0].innerHTML = '<h3>test</h3>';
 </script>
 
 </body>
