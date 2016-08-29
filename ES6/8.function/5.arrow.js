@@ -8,9 +8,14 @@ var f2 = id=> ({
   _id: 2
 });
 
+console.log(f2());
 
 
+function s() {
+}
+export function sx() {
+}
+export {s};
 
-
-
-
+exports.s2 = s;
+module.exports.s3 = s;
