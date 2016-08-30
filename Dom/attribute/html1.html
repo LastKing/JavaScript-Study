@@ -7,7 +7,8 @@
 <body>
 <input type="text" value="123">
 <script>
-    console.log(document.getElementsByTagName("input")[0].attributes[0].value)
+    //attributes[0]可以根据标签上属性的顺序获得
+    console.log(document.getElementsByTagName("input")[0].attributes.value)
 </script>
 </body>
 </html>
