@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jquery-2.0.3.js"></script>
+</head>
+<body>
+<script>
+//    function aaa(){
+//        console.log(1);
+//    }
+//
+//    function bbb(){
+//        console.log(2);
+//    }
+//
+//    function ccc(){
+//        console.log(3);
+//    }
+//
+//    var cb= $.Callbacks();
+//
+//    cb.add(aaa);
+//    cb.add(bbb);
+//    cb.add(ccc);
+//
+//    cb.fire();
+//
+//    document.addEventListener('click',function(){console.log(1)},false);
+//    document.addEventListener('click',function(){console.log(2)},false);
+//    document.addEventListener('click',function(){console.log(3)},false);
+
+
+//    function aaa(){
+//        console.log(1);
+//    }
+//
+//    (function(){
+//        function bbb(){
+//            console.log(2);
+//        }
+//    })();
+//
+//    aaa();
+////    bbb();  //anonymous function
+
+//    var cb= $.Callbacks();
+//
+//    function aaa(){
+//        console.log(1);
+//    }
+//    cb.add(aaa);
+//
+//    (function(){
+//        function bbb(){
+//            console.log(2);
+//        }
+//        cb.add(bbb);
+//    })();
+//
+//    cb.fire();
+
+//    *	once:			   will ensure the callback list can only be fired once (like a Deferred)
+//    *
+//    *	memory:	   will keep track of previous values and will call any callback added
+//    *					   after the list has been fired right away with the latest "memorized"
+//    *					   values (like a Deferred)
+//    *
+//    *	unique:		    will ensure a callback can only be added once (no duplicate in the list)
+//    *
+//    *	stopOnFalse:	interrupt callings when a callback returns false
+
+//    外部公用的方法
+//    add
+//    remove
+//    has
+//    empty
+//    disable
+//    disabled
+//    lock
+//    locked
+//    fireWith
+//    fire
+//    fired
+
+
+    function aaa(){
+        console.log(1);
+    }
+
+    function bbb(){
+        console.log(2);
+    }
+
+    function ccc(){
+        console.log(3);
+    }
+
+    var cb= $.Callbacks();
+
+    cb.add(aaa);
+    cb.add(bbb);
+    cb.add(ccc);
+
+    cb.remove(bbb);
+    cb.fire(bbb);
+
+</script>
+</body>
+</html>

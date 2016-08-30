@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jquery-2.0.3.js"></script>
+</head>
+<body>
+<script>
+//    (function () {
+//        var a = 10;
+//
+//        function $() {
+//            console.log(a);
+//        }
+//
+//        window.$ = $;
+//    })();
+//
+//    //    alert(a);//not defined
+//    $();
+
+    //延迟对象的问题
+//    setTimeout(function () {
+//        console.log(1);
+//    }, 1000);
+//    console.log(2);
+
+    var dfd = $.Deferred();
+
+    setTimeout(function () {
+        console.log(1);
+        dfd.resolve();
+    },1000);
+
+    dfd.done(function(){
+        console.log(2);
+    });
+
+
+</script>
+</body>
+</html>

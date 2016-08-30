@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+
+    //    (function (window) {
+    //
+    //        window
+    //
+    //    })(window);
+
+    //严格模式
+    //    "use strict";
+    //
+    //    a=10;
+
+
+//    var iSpeed = 10;
+//    a = a + iSpeed;
+
+//    console.log(window.a==undefined);
+//
+//    console.log(typeof  window.a=='undefined');
+
+//    console.log('    （    '.trim());
+
+
+//    function Aaa(){
+//
+//    }
+//
+//    Aaa.prototype.init=function(){
+//
+//    };
+//
+//    Aaa.prototype.css=function(){
+//
+//    };
+//
+//    var a1=new Aaa();
+//    a1.init();
+//    a1.css();
+
+
+    function jQuery(){
+        return new jQuery.prototype.init();
+    }
+
+    jQuery.prototype.init=function(){
+        console.log('init');
+    };
+
+    jQuery.prototype.css=function(){
+        console.log('css');
+    };
+    jQuery.prototype.init.prototype = jQuery.prototype;
+
+    console.log(jQuery());
+    jQuery().css();
+
+
+    //rquickExpr  :  <p>aaa  或者#div1
+    //rsingleTag  :   <p></p>  <div></div>
+
+    //    4.rmsPrefix = /^-ms-/
+    //    4.1用于厂商前缀，如果是：
+    //    -webkit-margin-left : 在js里面转成 webkitMarginLeft
+    //    但是IE下比较特殊：
+    //    -ms-margin-left: 在js里面首字母m必须要大写MsMarginLeft才行。
+
+
+</script>
+
+
+</body>
+</html>
