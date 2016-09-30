@@ -1,6 +1,3 @@
-/**
- * Created by toonew on 2016/3/16.
- */
 //http://www.cnblogs.com/snandy/archive/2012/09/01/2664134.html
 //var Person = function () {
 //};
@@ -30,7 +27,7 @@ function Person(name) {                             //构造函数
 Person.prototype.printName = function () //原型对象
 {
   alert(this.name);
-}
+};
 
 var person1 = new Person('Byron');//实例化对象
 console.log(person1.__proto__);//Person
