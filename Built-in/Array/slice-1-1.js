@@ -7,7 +7,6 @@ var citrus = fruits.slice(1, 3);
 
 console.log(citrus);
 
-
 // 使用slice方法从myCar中创建一个newCar.
 var myHonda = {color: "red", wheels: 4, engine: {cylinders: 4, size: 2.2}};
 var myCar = [myHonda, 2, "cherry condition", "purchased 1997"];
