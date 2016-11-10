@@ -26,9 +26,16 @@ c.calculate(40); // 80
 
 // 让我们看看是否使用了预期的属性
 
+var o1 = {};
+var o2 = new Object();//以上两者等价
+
 console.log(
+    // 对象的隐式原型指向 指向 构造函数的原型
     b.__proto__ === Foo.prototype, // true
     c.__proto__ === Foo.prototype, // true
+
+    o1.__proto__ == Object.prototype, //true
+    o2.__proto__ == Object.prototype, //true
 
     // "Foo.prototype"自动创建了一个特殊的属性"constructor"
     // 指向a的构造函数本身
