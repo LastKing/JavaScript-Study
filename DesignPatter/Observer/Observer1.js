@@ -1,18 +1,19 @@
 var pubsub = {};
 
 (function (q) {
-  var topics = {};//回调函数 数组
-  var subUid = -1;
 
-  //发布方法
+  var topics = {}, // 回调函数存放的数组
+      subUid = -1;
+  // 发布方法
   q.publish = function (topic, args) {
+
     if (!topics[topic]) {
       return false;
     }
 
     setTimeout(function () {
-      var subscribers = topics[topic];
-      var len = subscribers ? subscribers.length : 0;
+      var subscribers = topics[topic],
+          len = subscribers ? subscribers.length : 0;
 
       while (len--) {
         subscribers[len].func(topic, args);
@@ -36,27 +37,46 @@ var pubsub = {};
     return token;
   };
 
-  q
+  //退订方法
+  q.unsubscribe = function (token) {
+    for (var m in topics) {
+      if (topics[m]) {
+        for (var i = 0, j = topics[m].length; i < j; i++) {
+          if (topics[m][i].token === token) {
+            topics[m].splice(i, 1);
+            return token;
+          }
+        }
+      }
+    }
+    return false;
+  };
+}(pubsub));
 
-})();
+//来，订阅一个
+pubsub.subscribe('example1', function (topics, data) {
+  console.log(topics + ": " + data);
+});
 
+//发布通知
+pubsub.publish('example1', 'hello world!');
+pubsub.publish('example1', ['test', 'a', 'b', 'c']);
+pubsub.publish('example1', [{'color': 'blue'}, {'text': 'hello'}]);
 
+//将订阅赋值给一个变量，以便退订
+var testSubscription = pubsub.subscribe('example1', function (topics, data) {
+  console.log(topics + ": " + data);
+});
 
+//发布通知
+pubsub.publish('example1', 'hello world!');
+pubsub.publish('example1', ['test', 'a', 'b', 'c']);
+pubsub.publish('example1', [{ 'color': 'blue' }, { 'text': 'hello'}]);
 
+//退订
+setTimeout(function () {
+  pubsub.unsubscribe(testSubscription);
+}, 0);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//再发布一次，验证一下是否还能够输出信息
+pubsub.publish('example1', 'hello again! (this will fail)');
