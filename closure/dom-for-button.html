@@ -43,6 +43,23 @@
             console.log('You clicked element #-- 3 --' + i3);
         });
     }
+
+    /*  方式四：Array  forEach  */
+    var nodes4 = document.getElementsByTagName('button');
+    Array.prototype.slice.call(nodes4).forEach(function (ele, index) {
+        ele.addEventListener('click', function () {
+            console.log('You clicked element #-- 4 --' + index);
+        });
+    });
+
+    /* 方式五：事件代理 */
+    var tagA = document.getElementsByTagName('button');
+    document.addEventListener('click', function (ev) {
+        if (ev.target.tagName !== 'BUTTON')return;
+        ev.preventDefault();
+        console.log('You clicked element #-- 5 --' + Array.prototype.indexOf.call(tagA, ev.target));
+    })
+
 </script>
 
 </body>
