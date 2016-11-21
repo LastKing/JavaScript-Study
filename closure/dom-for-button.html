@@ -19,46 +19,55 @@
     /* 方式一：在监听器内部函数 闭包,立即执行*/
     var nodes = document.getElementsByTagName('button');
     for (var i = 0; i < nodes.length; i++) {
-        nodes[i].addEventListener('click', function (i) {
-            return function () {
-                console.log('You clicked element #-- 1 --' + i);
-            };
-        }(i));
+      nodes[i].addEventListener('click', function (i) {
+        return function () {
+          console.log('You clicked element #-- 1 --' + i);
+        };
+      }(i));
     }
 
     /* 方式二：将监听器 整个闭包 */
     var nodes2 = document.getElementsByTagName('button');
     for (var i2 = 0; i2 < nodes2.length; i2++) {
-        (function (i2) {
-            nodes[i2].addEventListener('click', function () {
-                console.log('You clicked element #-- 2 --' + i2);
-            });
-        })(i2);
+      (function (i2) {
+        nodes[i2].addEventListener('click', function () {
+          console.log('You clicked element #-- 2 --' + i2);
+        });
+      })(i2);
     }
 
     /* 方式三： let 实现*/
     var nodes3 = document.getElementsByTagName('button');
     for (let i3 = 0; i3 < nodes3.length; i3++) {
-        nodes[i3].addEventListener('click', function () {
-            console.log('You clicked element #-- 3 --' + i3);
-        });
+      nodes[i3].addEventListener('click', function () {
+        console.log('You clicked element #-- 3 --' + i3);
+      });
     }
 
     /*  方式四：Array  forEach  */
     var nodes4 = document.getElementsByTagName('button');
     Array.prototype.slice.call(nodes4).forEach(function (ele, index) {
-        ele.addEventListener('click', function () {
-            console.log('You clicked element #-- 4 --' + index);
-        });
+      ele.addEventListener('click', function () {
+        console.log('You clicked element #-- 4 --' + index);
+      });
     });
 
     /* 方式五：事件代理 */
     var tagA = document.getElementsByTagName('button');
     document.addEventListener('click', function (ev) {
-        if (ev.target.tagName !== 'BUTTON')return;
-        ev.preventDefault();
-        console.log('You clicked element #-- 5 --' + Array.prototype.indexOf.call(tagA, ev.target));
-    })
+      if (ev.target.tagName !== 'BUTTON')return;
+      ev.preventDefault();
+      console.log('You clicked element #-- 5 --' + Array.prototype.indexOf.call(tagA, ev.target));
+    });
+
+    /* 方式六：内部加bind 绑定*/
+    var nodes6 = document.getElementsByTagName('button');
+    for (var i6 = 0; i6 < nodes6.length; i6++) {
+      nodes6[i6].addEventListener('click', (function (index) {
+        console.log('You clicked element #-- 6 --' + index);
+      }).bind(null, i6));
+    }
+
 
 </script>
 
