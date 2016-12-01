@@ -9,7 +9,8 @@ function render(template, context) {
    \{    \}表示  { 和 } 的直接量
    [^\{\}\\] 表示不存在 { } \ 这个三个符号中的一次
    */
-  var tokenReg = /\{([^\{\}\\]+)\}/g;
+  var tokenReg = /(\\)?\{([^\{\}\\]+)(\\)?\}/g;
+  // var tokenReg = /\{([^\{\}\\]+)\}/g;
 
   return template.replace(tokenReg, function (word, slash1, token, slash2) {
     if (slash1 || slash2) {
