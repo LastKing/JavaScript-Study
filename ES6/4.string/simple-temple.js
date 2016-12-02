@@ -12,6 +12,13 @@ function render(template, context) {
   var tokenReg = /(\\)?\{([^\{\}\\]+)(\\)?\}/g;
   // var tokenReg = /\{([^\{\}\\]+)\}/g;
 
+  //replace返回
+  // 第一个参数，匹配正则，
+  // 第二个函数的参数：
+  //    1. 匹配命中的字符串
+  //    2. p1,p2,p3规定的()位置的值, p1 指(\\)匹配的值，p2 指 {xxx} 中的xxx， p3指的是(\\)匹配的值
+  //    3. offset 偏移的数量 （这里没写）
+  //    4. 被匹配的原字符串
   return template.replace(tokenReg, function (word, slash1, token, slash2) {
     if (slash1 || slash2) {
       return word.replace('\\', '');
