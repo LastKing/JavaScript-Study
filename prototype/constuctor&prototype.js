@@ -46,3 +46,18 @@ var c = new C();
 console.log(c.constructor);
 c.sayName();
 
+/////////
+function ParseUrl() {
+  var obj = {'c': 'c'};
+
+  this.constructor.prototype.getInfoByKey = function (key) {
+    return obj[key];
+  };
+  //两者等同
+  ParseUrl.prototype.getInfoByKey = function (key) {
+    return obj[key];
+  };
+}
+
+var test = new ParseUrl();
+console.log(test.getInfoByKey('c'));

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<ul id="flowWarp" class="lm-w">
+    <li class="lm-l"><a class="lm-a">金融业</a>
+        <ul class="lm-u">
+            <li class="lm-l"><a class="lm-a">2016金融产品投资</a>
+                <ul class="lm-u">
+                    <li class="lm-l"><a class="lm-a">产品投资分析1</a>
+                        <ul class="lm-u">
+                            <li class="flow-list lm-list">用户投资资料1</li>
+                            <li class="flow-list lm-list">用户投资资料2</li>
+                            <li class="flow-list lm-list">用户投资资料3</li>
+                        </ul>
+                    </li>
+                    <li class="lm-l"><a class="lm-a">产品投资分析2</a>
+                        <ul class="lm-u">
+                            <li class="flow-list lm-list">用户投资资料2</li>
+                            <li class="flow-list lm-list">用户投资资料3</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="lm-l"><a class="lm-a">2017金融产品投资</a>
+                <ul class="lm-u">
+                    <li class="flow-list lm-list">用户投资资料33</li>
+                    <li class="flow-list lm-list">用户投资资料19</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li class="lm-l"><a class="lm-a">银行业</a>
+        <ul class="lm-u">
+            <li class="lm-l"><a class="lm-a">2016银行产品投资</a>
+                <ul class="lm-u">
+                    <li class="flow-list lm-list">用户投资资料1</li>
+                    <li class="flow-list lm-list">用户投资资料1</li>
+                </ul>
+            </li>
+            <li class="lm-l"><a class="lm-a">2017银行产品投资</a>
+                <ul class="lm-u">
+                    <li class="flow-list lm-list">用户投资资料1</li>
+                    <li class="flow-list lm-list">用户投资资料1</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<a href="https://segmentfault.com/q/1010000007815161">出处：https://segmentfault.com/q/1010000007815161</a>
+<script src="./jquery-1.11.3.js"></script>
+
+<!-- js版本 -->
+<script>
+  // 取得数组
+  function getArrByUl(ul, id) {
+    var arr = [];
+    var oLi = {};
+    var children = ul.children;
+    for (var i = 0; i < children.length; i++) {
+      oLi = {
+        id: id ? id + '-' + (i + 1) : i + 1,
+        text: getTxtByLi(children[i]),
+      }
+      // 非最底层li
+      if (children[i].className.search('flow-list') < 0) {
+        oLi.children = getArrByUl(findNode(children[i], 'UL'), oLi.id);
+      }
+      arr.push(oLi);
+    }
+    return arr;
+  }
+
+  // 取得text
+  function getTxtByLi(li) {
+    var txt = '';
+    var children = li.children;
+    // 是最底层li
+    if (li.className.search('flow-list') >= 0) {
+      txt = li.innerHTML;
+    } else {
+      txt = findNode(li, 'A').innerHTML;
+    }
+    return txt;
+  }
+
+  // 取得元素的某个子元素
+  function findNode(el, tagName) {
+    for (var i = 0; i < el.children.length; i++) {
+      if (el.children[i].tagName === tagName) {
+        return el.children[i];
+      }
+    }
+  }
+
+  var flowWarp = document.getElementById('flowWarp');
+
+  console.log(getArrByUl(flowWarp))
+</script>
+
+<!-- jquery 版本-->
+<script>
+  var root = $('#flowWarp');
+  var result = [];
+
+  function transform(root, result, pid) {
+    var index = 1;
+    root.find('>').each(function () {
+      var id = pid ? pid + '-' + (index++) : index++;
+      text = $(this).find('a').html() || $(this).text();
+      var child = [];
+      result.push({
+        id: id,
+        text: text,
+      });
+      transform($(this).find('ul:first'), child, id);
+    })
+  }
+
+  transform(root, result);
+  console.log(JSON.stringify(result));
+</script>
+
+</body>
+</html>
