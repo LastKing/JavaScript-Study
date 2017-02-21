@@ -2,20 +2,20 @@
  * Created by toonew on 2017/2/22.
  */
 function add(x) {
-  function add(y) {
-    return x + y;
-  }
+  let fn =  function (y) {
+    return add(x + y);
+  };
 
-  add.prototype.toString = function () {
+  fn.valueOf = function () {
     return x;
   };
 
-  add.prototype.valueOf = function () {
-    return x;
+  fn.toString = function () {
+    return "" + x;
   };
-
-  return add;
+  return fn;
 }
 
-
+console.log(add(3));
 console.log(add(3)(3));
+console.log(add(3)(3)(3));
