@@ -155,8 +155,8 @@ function throwIfMissing() {
   throw new Error('Missing parameter');
 }
 
-function foo(mustBeProvided = throwIfMissing()) {
+function foo2(mustBeProvided = throwIfMissing()) {
   return mustBeProvided;
 }
 
-foo('fsda');
+foo2('fsda');

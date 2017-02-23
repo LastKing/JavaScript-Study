@@ -4,12 +4,12 @@ var bar = {
   x: 20,
   test: function () {
 
-    alert(this === bar); // true
-    alert(this.x); // 20
+    console.log(this === bar); // true
+    console.log(this.x); // 20
 
 //            this = foo; // 错误，任何时候不能改变this的值
 
-    alert(this.x); // 如果不出错的话，应该是10，而不是20
+    console.log(this.x); // 如果不出错的话，应该是10，而不是20
 
   }
 
