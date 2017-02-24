@@ -7,5 +7,3 @@ var str = "John Smith";
 
 var newStr = str.replace(reg, "$2 $1");
 console.log(newStr);
-
-"".trim();
