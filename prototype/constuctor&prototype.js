@@ -43,8 +43,8 @@ C.prototype = {
 };
 
 var c = new C();
-console.log(c.constructor);
-c.sayName();
+console.log(c.constructor);//Object
+c.sayName();  //sayNamec
 
 /////////
 function ParseUrl() {

@@ -3,18 +3,18 @@
  */
 /// 以下 所有资料来自于 王鹏福
 /// http://www.cnblogs.com/wangfupeng1988/p/4001284.html
-console.log(typeof(x));    // undefined
-console.log(typeof(10));   // number
-console.log(typeof('abc')); // string
-console.log(typeof(true));  // boolean
+console.log(typeof (x));      // undefined
+console.log(typeof (10));     // number
+console.log(typeof ('abc'));  // string
+console.log(typeof (true));  // boolean
 
-console.log(typeof(function () {
+console.log(typeof (function () {
 }));  //function
 
-console.log(typeof([1, 'a', true]));  //object
+console.log(typeof ([1, 'a', true]));  //object
 console.log(typeof ({a: 10, b: 20}));  //object
-console.log(typeof (null));  //object
-console.log(typeof (new Number(10)));  //object
+console.log(typeof (null));           //object
+console.log(typeof (new Number(10))); //object
 
 function fn() {
 }
@@ -32,8 +32,8 @@ arr[0] = 5;
 arr[1] = 'x';
 arr[2] = true;
 
-console.log(typeof(Object));// function
-console.log(typeof(Array));// function
+console.log(typeof(Object)); // function
+console.log(typeof(Array));  // function
 
 ///////////*************从上面得出  对象是由 函数来创建的
 

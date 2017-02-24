@@ -18,4 +18,4 @@ console.log(c.pre());
  }
  这个并无test属性，所以 无法调用到test。
  */
-//https://segmentfault.com/q/1010000004702940?_ea=697000
+//  https://segmentfault.com/q/1010000004702940?_ea=697000

@@ -18,7 +18,6 @@ function Dog2(argument) {
   this.__proto__ = {};
 }
 
-
 function Huskies2(argument) {
 }
 

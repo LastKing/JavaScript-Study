@@ -21,7 +21,10 @@ console.log(
 
     Foo.__proto__ == Function.prototype,      //所有 构建函数 和 Function  的隐式原型都指向 Function.prototype
     Object.__proto__ == Function.prototype,
-    Function.__proto__ == Function.prototype
+
+    Function.__proto__ == Function.prototype, //注意这两个比较特殊，一个指向自己的prototype
+    Object.__proto__.prototype == null       //一个指向null
+
 );
 
 /**
