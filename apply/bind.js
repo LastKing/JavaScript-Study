@@ -10,11 +10,12 @@ function foo(somthing) {
 var obj = {
   a: 2
 };
-
+//绑定this
 var bar = foo.bind(obj);
 bar(3); // 2   3
 
-/////////////
+
+//第二个例子
 x = 9;
 
 var test = {
@@ -23,7 +24,10 @@ var test = {
     return this.x
   }
 };
+//将方法复制给函数，getX 的 this 从 test --> global
 console.log(test.getX());
 var test2 = test.getX;
 console.log(test2());
+
+//从新绑定this 到test上
 console.log(test2.bind(test)());
