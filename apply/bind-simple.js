@@ -4,6 +4,7 @@
  * 1.绑定 this ，绑定传参（bind上的 this ，args）
  * 2.绑定动态参数（返回函数的调用时的参数）
  * 3.继承原来函数的prototype
+ * 4.绑定this时，需要注意 调用时和new两种情况
  * Created by Rain on 2017/3/1.
  */
 
@@ -23,7 +24,9 @@ Function.prototype.bind2 = function (oThis) {
   var fBound = function () {
     //修改当前函数的绑定对象（上下文）
     return fToBind.apply(
-        this instanceof fNOP ? this : oThis || this, //fToBind 数组
+        //1.函数调用时(this 为global）判定oThis 有时绑定oThis 否则this
+        //2.new创建时，因为this 指向a函数本身，（？？？这个地方存在疑惑）
+        this instanceof fNOP ? this : oThis || this, //this （调用和new）两种的绑定问题
         aArgs.concat(Array.prototype.slice.call(arguments)) //之前绑定的参数和 现在 后面调用时 传入的参数(1 2)都在这
     )
   };
@@ -43,3 +46,5 @@ a();
 var test = a.bind2({a: 23}, 432);
 
 test();
+
+var t2=new test();

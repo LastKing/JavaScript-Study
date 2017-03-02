@@ -1,4 +1,5 @@
 /**
+ * https://segmentfault.com/a/1190000002662251   (一些实例）
  * Created by Rain on 2016/9/7.
  */
 //apply 、call 都是调用函数，直接返回调用结果
