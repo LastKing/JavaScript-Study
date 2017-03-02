@@ -4,7 +4,7 @@
  * 1.绑定 this ，绑定传参（bind上的 this ，args）
  * 2.绑定动态参数（返回函数的调用时的参数）
  * 3.继承原来函数的prototype
- * 4.绑定this时，需要注意 调用时和new两种情况
+ * 4.绑定this时，需要注意 调用时和new两种情况  （ https://segmentfault.com/q/1010000002874323 ）
  * Created by Rain on 2017/3/1.
  */
 
