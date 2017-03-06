@@ -27,7 +27,7 @@ Foo.prototype = {
 
 Foo.abc();          //123
 var f = new Foo();
-f.def();            //def
-f.abc();            //abc
+f.def();            //abc
+f.abc();            //def
 Foo.abc();          //456
 console.log(Foo["abc"]);

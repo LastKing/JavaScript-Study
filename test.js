@@ -8,9 +8,9 @@ var obj = {
   getFullname: () => {
     return this.fullname;
   }
-}
+};
 
-var person = obj.getFullname
+var person = obj.getFullname;
 
-console.log(obj.getFullname()) // b
-console.log(person()) // b
+console.log(obj.getFullname()); // b
+console.log(person()); // b
