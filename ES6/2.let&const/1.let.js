@@ -6,3 +6,8 @@
   var b = 1;
 }
 
+console.log(typeof a); //undefined
+console.log(b);  //1
+
+
+
