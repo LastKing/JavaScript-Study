@@ -1,7 +1,10 @@
 /**
  * Created by Rain on 2017/3/7.
  */
-function maopao(arr) {
+//这个对冒泡的  理解是错误的，虽然能出 结果，但是这个并不是冒泡
+//因为冒泡是每次 选出最大的，不断向上的，这个是固定一个，跟后面所有的 数据对比
+//所以 这样是确定固定位置的数据
+function maopaoError(arr) {
   var flag = false;
   var duibi = 0, change = 0;
   for (var i = 0; i < arr.length; i++) {
@@ -16,6 +19,19 @@ function maopao(arr) {
     }
   }
   console.log(`对比 ${duibi}  交换${change}`);
+  return arr;
+}
+
+function maopao(arr) {
+  for (var i = 0; i < arr.length; i++) {
+    for (var j = 1; j < arr.length - i; j++) {
+      if (arr[j - 1] > arr[j]) {
+        var temp = arr[j];
+        arr[j] = arr[j - 1];
+        arr[j - 1] = temp;
+      }
+    }
+  }
   return arr;
 }
 
