@@ -2,21 +2,19 @@
  * Created by Rain on 2017/3/7.
  */
 function charu(arr) {
-  var duibi = 0, change = 0;
-
   for (var i = 1; i < arr.length; i++) {
-    var key = arr[i];
-    var j = i - 1;
 
-    while (j >= 0 && arr[j] > key) {
-      change++;
-      arr[j + 1] = arr[j];
-      j--;
+    //寻找元素arr[i] 合适的插入位置
+    for (var j = i; j > 0; j--) {
+      if (arr[j] < arr[j - 1]) {
+        temp = arr[j];
+        arr[j] = arr[j - 1];
+        arr[j - 1] = temp;
+      } else {
+        break;
+      }
     }
-    arr[j + 1] = key;
   }
-
-  console.log(`交换 ：${change}`);
   return arr;
 }
 

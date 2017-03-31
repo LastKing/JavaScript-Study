@@ -1,6 +1,6 @@
 function classof(o) {
-  if (o == null) return "NULL";
-  if (o == undefined) return "Undefined";
+  if (o === null) return "NULL";
+  if (o === undefined) return "Undefined";
   return Object.prototype.toString.call(o).slice(8, -1);
 }
 
