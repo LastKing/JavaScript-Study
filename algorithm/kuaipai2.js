@@ -18,19 +18,20 @@ function quickSort(arr) {
     return arr;
   }
 
-  var mNumberIndex = Math.floor(arr.length / 2);
-  var mNumber = arr.splice([mNumberIndex], 1)[0];
-  var left = [];
-  var right = [];
+  var mIndex = Math.floor(arr.length / 2);
+  var mNumber = arr.splice(mIndex, 1)[0];
+  var arrL = [];
+  var arrR = [];
 
   for (var i = 0; i < arr.length; i++) {
-    if (mNumber > arr[i]) {
-      left.push(arr[i]);
+    if (arr[i] > mNumber) {
+      arrR.push(arr[i]);
     } else {
-      right.push(arr[i]);
+      arrL.push(arr[i]);
     }
   }
-  return quickSort(left).concat(mNumber, quickSort(right));
+
+  return quickSort(arrL).concat(mNumber, arrR);
 }
 
 

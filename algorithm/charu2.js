@@ -4,15 +4,10 @@
 function charu(arr) {
   for (var i = 1; i < arr.length; i++) {
 
-    //寻找元素arr[i] 合适的插入位置
-    for (var j = i; j > 0; j--) {
-      if (arr[j] < arr[j - 1]) {
-        temp = arr[j];
-        arr[j] = arr[j - 1];
-        arr[j - 1] = temp;
-      } else {
-        break;
-      }
+    for (var j = i; j > 0 && arr[j] < arr[j - 1]; j--) {
+      var temp = arr[j];
+      arr[j] = arr[j - 1];
+      arr[j - 1] = temp;
     }
   }
   return arr;

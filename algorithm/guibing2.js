@@ -2,38 +2,33 @@
  * Created by Rain on 2017/3/16.
  */
 function mergeSort(arr, low, high) {
-  //这里用来返回最低  粒度的数组 ，单个 单个的数字，结束递归，开始回收
   if (low > high) {
     return [];
-  } else if (low == high) {
+  } else if (low === high) {
     return [arr[low]];
   }
 
-  //开始递归分解/结合，不断的分解和  结合
-  var mIndex = Math.floor((low + high) / 2);
-  var arrL = mergeSort(arr, low, mIndex);
-  var arrR = mergeSort(arr, mIndex + 1, high);
+  var mIndex = Math.floor((high + low) / 2);
+  var arrR = mergeSort(arr, low, mIndex);
+  var arrL = mergeSort(arr, mIndex + 1, high);
 
-  var resultArr = [];
+  var result = [];
+  while (arrR.length > 0 && arrL.length > 0) {
 
-  //一层层的根据  左右数组 对比 合并，对比 合并
-  while (arrL.length > 0 || arrR.length > 0) {
-    if (arrL[0] < arrR[0]) {
-      resultArr.push(arrL.shift());
+    if (arrR[0] < arrL[0]) {
+      result.push(arrR.shift())
     } else {
-      resultArr.push(arrR.shift());
+      result.push(arrL.shift())
     }
 
-    if (arrL.length == 0) {
-      resultArr = resultArr.concat(arrR);
-      break;
-    } else if (arrR.length == 0) {
-      resultArr = resultArr.concat(arrL);
-      break;
+    if (arrR.length === 0) {
+      result = result.concat(arrL);
+    } else if (arrL.length === 0) {
+      result = result.concat(arrR);
     }
   }
 
-  return resultArr;
+  return result;
 }
 
 
