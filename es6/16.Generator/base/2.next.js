@@ -56,5 +56,5 @@ function* dataConsumer() {
 let genObj = dataConsumer();
 genObj.next();// Started               暂停位置 ： 1.{yield}
 console.log(genObj.next('a'));// 1. a              2.{yield}
-console.log(genObj.next('b'));// 1. b              3.{yield}
+console.log(genObj.next('b'));// 2. b              3.return
 

@@ -24,14 +24,16 @@ function getDate(str) {
   str = str.replace(/-/g, "/");
   return new Date(str);
 }
+
 var str = '2015-12-7 13:36:59';
 var date = getDate(str);
 console.log(date);
 
 function getStamp(str) {
-  str = str2.replace(/ |:/g, '-').split('-');
+  str = str2.replace(/[ :]/g, '-').split('-');
   return Date.UTC(str[0], str[1], str[2], str[3], str[4], str[5]);
 }
+
 var str2 = '2015-12-7 13:36:59';
 var date2 = getStamp(str2);
 console.log(date2);
