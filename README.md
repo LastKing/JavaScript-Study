@@ -3,6 +3,8 @@
 
 js的学习还是很有趣的，虽然很多坎坷。嘿嘿
 
+## 学习之路记录
+1. 2018/03/20 set和map学习，map解决了什么object什么缺陷，以及WeakMap，何为weak
 
 ### 参考：<br>
 1. [Jquery源码解析](http://www.cnblogs.com/aaronjs/p/3278578.html)
